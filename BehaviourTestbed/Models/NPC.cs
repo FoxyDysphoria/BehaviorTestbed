@@ -59,9 +59,9 @@ namespace BehaviourTestbed.Models
 			Refractory = refractory;
 			Sensitivity = sensitivity;
 
-
-			Climax.Length = 300f;
-			Climax.PulseLength = 4f;
+			Climax = new ClimaxInfo();
+			Climax.Length = 300;
+			Climax.PulseLength = 4;
 			Climax.OutputPerPulse = 100;
 			Climax.TimeSinceLast = 1800;
 		}
@@ -117,11 +117,11 @@ namespace BehaviourTestbed.Models
 			Refractory = newRefractory;
 		}
 
-		private void UpdateNPC()
+		public void UpdateNPC()
 		{
 			if (Climax.TimeSinceLast - Refractory >= 0)
 			{
-				if (Climax.TimeSinceLast % 5 == 0)
+				if (Climax.TimeSinceLast % 4 == 0)
 				{
 					if (Arousal < 100)
 					{
@@ -159,9 +159,9 @@ namespace BehaviourTestbed.Models
 		{
 			string objectString = "";
 
-			objectString += String.Format("NAME:\t\t{0}\nHEIGHT:\t\t{1}\nLENGTH:\t\t{2}\n====================================\n", Species, Height, Length);
-			objectString += String.Format("AROUSAL:\t{0}\tFRUSTRATION:\t{1}\nAGRESSIVENESS:\t{2}\tSENSITIVITY:\t{3}\nREFRACTORY:\t{4}\tPERSONALITY:\t{5}\n====================================\n", Arousal, Frustration, Aggressiveness, Sensitivity, Refractory, Personality);
-			objectString += String.Format("CLIMAX INFO:\n\tLENGTH: {0}\n\tPULSE LENGTH: {1}\n\tPULSE SIZE: {2}mL\n\tTIME SINCE LAST: {3}", Climax.Length, Climax.PulseLength, Climax.OutputPerPulse, Climax.TimeSinceLast);
+			objectString += String.Format("========================================================================\nNAME:\t\t{0}\nHEIGHT:\t\t{1}\nLENGTH:\t\t{2}\n========================================================================\n", Species, Height, Length);
+			objectString += String.Format("AROUSAL:\t{0}\tFRUSTRATION:\t{1}\nAGRESSIVENESS:\t{2}\tSENSITIVITY:\t{3}\nREFRACTORY:\t{4}\tPERSONALITY:\t{5}\n========================================================================\n", Arousal, Frustration, Aggressiveness, Sensitivity, Refractory, Personality);
+			objectString += String.Format("CLIMAX INFO:\n\tLENGTH: {0}\n\tPULSE LENGTH: {1}\n\tPULSE SIZE: {2}mL\n\tTIME SINCE LAST: {3}\n========================================================================", Climax.Length, Climax.PulseLength, Climax.OutputPerPulse, Climax.TimeSinceLast);
 
 			return objectString;
 		}

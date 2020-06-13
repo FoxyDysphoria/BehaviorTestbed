@@ -30,6 +30,9 @@ namespace BehaviourTestbed
 						break;
 					case 3:
 						TestWolf.Climax.TimeSinceLast = 0;
+						TestWolf.SetArousalTo(0);
+						TestWolf.SetFrustrationTo(0);
+						TestWolf.UpdateNPC();
 						break;
 				}
 			}
