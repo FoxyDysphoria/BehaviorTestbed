@@ -40,7 +40,7 @@ namespace BehaviourTestbed
 
 		private static int PassTimeMenu()
 		{
-			return ConsoleIO.Input.PromptInt("By how many seconds?", 1, 9999);
+			return ConsoleIO.Input.PromptInt("By how many seconds? (1, 9999)", 1, 9999);
 		}
 	}
 }
