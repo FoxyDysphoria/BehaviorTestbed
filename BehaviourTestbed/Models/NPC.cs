@@ -53,8 +53,8 @@ namespace BehaviourTestbed.Models
 		public NPC(string species, float length, float height, Personalities personality, int refractory, float sensitivity)
 		{
 			Species = species;
-			Length = Length;
-			Height = Height;
+			Length = length;
+			Height = height;
 			Personality = personality;
 			Refractory = refractory;
 			Sensitivity = sensitivity;
@@ -153,6 +153,14 @@ namespace BehaviourTestbed.Models
 				Climax.TimeSinceLast++;
 				UpdateNPC();
 			}
+		}
+
+		public void CauseClimax()
+		{
+			Climax.TimeSinceLast = 0;
+			SetArousalTo(0);
+			SetFrustrationTo(0);
+			UpdateNPC();
 		}
 
 		public override string ToString()

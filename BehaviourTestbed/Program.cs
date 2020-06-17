@@ -11,28 +11,40 @@ namespace BehaviourTestbed
 			Console.WriteLine("Testing of Behviors.");
 			Console.WriteLine("v0.1");
 
-			NPC TestWolf = new NPC("Wolf", 70f, 60f, Personalities.EXTREMELY_DOMINANT, 30, 50f);
+			NPC TestWolf = new NPC("Wolf", 70, 60, Personalities.EXTREMELY_DOMINANT, 30, 50);
+			NPC TestFox = new NPC("Fox", 50, 35, Personalities.SLIGHTLY_DOMINANT, 15, 70);
 
 
-			string[] choices = { "Pass Time", "Check NPC", "Make NPC Climax" };
+			string[] choices = { "Pass Time", "Check NPCs", "Make NPC Climax" };
 			bool finished = false;
 			while (!finished)
 			{
-				switch (ConsoleIO.Input.PromptMenu(choices, "Pick an option", true)){
+				switch (ConsoleIO.Input.PromptMenu(choices, "Pick an option", true)) {
 					case 0:
 						finished = true;
 						break;
 					case 1:
-						TestWolf.PassTime(PassTimeMenu());
+						int timeToPass = PassTimeMenu();
+						TestWolf.PassTime(timeToPass);
+						TestFox.PassTime(timeToPass);
 						break;
 					case 2:
 						Console.WriteLine(TestWolf);
+						Console.WriteLine(TestFox);
 						break;
 					case 3:
-						TestWolf.Climax.TimeSinceLast = 0;
-						TestWolf.SetArousalTo(0);
-						TestWolf.SetFrustrationTo(0);
-						TestWolf.UpdateNPC();
+						string[] NPCs = { "Wolf", "Fox" };
+						switch (ConsoleIO.Input.PromptMenu(NPCs, "Which NPC do you want to climax?", false))
+						{
+							case 1:
+								TestWolf.CauseClimax();
+								break;
+							case 2:
+								TestFox.CauseClimax();
+								break;
+							default:
+								break;
+						}
 						break;
 				}
 			}
