@@ -1,0 +1,29 @@
+
+Example Location
+
+Atrium:
+	Atrium
+	An atrium
+	Connections:
+		Fountain
+		Hiking Trail
+		Tool Shed
+
+Hiking Trail:
+	Hiking Trail
+	A hiking trail
+	Connections:
+		Atrium
+		Mountain Pass
+		Fountain
+
+
+
+Pathfinder
+
+GetShortestPath(NPC // Player){
+	//????
+}
+
+
+
